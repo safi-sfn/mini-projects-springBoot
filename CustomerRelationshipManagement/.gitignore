@@ -14,6 +14,8 @@ target/
 .sts4-cache
 .gitattributes
 .mvn
+src/main/resources/application.properties
+
 
 ### IntelliJ IDEA ###
 .idea
