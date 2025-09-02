@@ -21,6 +21,7 @@ public class ProductController {
 	private ProductServiceImpl service;
 
 	
+	// Show-All-Products
 	@GetMapping("/show-product")
 	public String showAllProduct(Model model) {
 		List<Product> allProducts = service.getAllProduct();
@@ -37,9 +38,11 @@ public class ProductController {
 
 	@GetMapping("/category")
 	public String showByCategory(@RequestParam("category") String category, Model model) {
+		// get product By Category
 	    List<Product> products = service.getProductsByCategory(category);
 	    model.addAttribute("products", products);
 	
+	 // Show All categories -> eg- Mobile,Electronic
 	    List<String> categories = service.getAllCategories();
 	    model.addAttribute("categories", categories);
 	    
@@ -51,14 +54,18 @@ public class ProductController {
 	
 	@GetMapping("/brand")
 	public String showByBrand(@RequestParam("brand")String brand, Model model) {
+		// get product By Brand
 		List<Product> products = service.getProductByBrand(brand);
 		model.addAttribute("products", products);
+		
+		// Show All brands -> eg- Apple,HP
+		List<String> brands = service.getAllBrand();
+		model.addAttribute("brands", brands);
 		
 		List<String> categories = service.getAllCategories();
 	    model.addAttribute("categories", categories);
 	    
-	    List<String> brands = service.getAllBrand();
-		model.addAttribute("brands", brands);
+		
 		return "dashboard";
 	}
 	
@@ -70,6 +77,7 @@ public class ProductController {
 	
 	@PostMapping("/add-product")
 	public String addProduct(Model model ,Product product) {
+		// Adding New product
 		Product p = service.addProduct(product);
 		model.addAttribute("newProduct", p);
 		return "redirect:/ps/show-product";
@@ -77,13 +85,14 @@ public class ProductController {
 	
 	@GetMapping("/delete-data")
 	public String deleteProduct(@RequestParam("productId")Integer id) {
+		// Delete the Product
 		service.deleteProductRecord(id);
 		return "redirect:/ps/show-product";
 	}
 	
 	@GetMapping("/update-data")
 	public String updateData(@RequestParam("productId")Integer id , Model model) {
-		
+		// Getting product by productId
 		Product pr = service.getProductById(id);
 		model.addAttribute("product", pr);
 		return "updateProduct";
