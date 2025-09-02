@@ -21,7 +21,20 @@
             <a href="min-price" class="btn">Min Price Product</a>
             <a href="max-price" class="btn">Max Price Product</a>
             <a href="price-range" class="btn">Products by Price Range</a>
-            <a href="brand-list" class="btn">Show by Brand</a>
+          
+             <!-- Dropdown for Brand -->
+            <form action="brand" method="get" class="dropdown-form">
+                <select name="brand" onchange="this.form.submit()">
+						<option value="" disabled
+							<c:if test="${empty param.brand}">selected</c:if>>--
+							Select Brand --</option>
+						<c:forEach var="b" items="${brands}">
+                        <option value="${b}"
+                           <c:if test="${param.brand == b}">selected</c:if>>
+                           ${b}</option>
+                    </c:forEach>
+                </select>
+            </form>
             
             <!-- Dropdown for category -->
             <form action="category" method="get" class="dropdown-form">
@@ -58,16 +71,23 @@
             </thead>
             <tbody>
                 <c:forEach var="p" items="${products}">
+                		<c:url var="UpdateLink" value="/ps/update-data">
+                        	<c:param name="productId" value="${p.productId}"></c:param>
+                        </c:url>
+                
+                		<c:url var="DeleteLink" value="/ps/delete-data">
+                        	<c:param name="productId" value="${p.productId}"></c:param>
+                        </c:url>
+               
                     <tr>
-                 
                         <td>${p.productName}</td>
                         <td>${p.brand}</td>
                         <td>${p.brandCategory}</td>
                         <td>₹${p.price}</td>
                         <td>${p.stock}</td>
                         <td>
-                            <a href="edit-product?id=${p.productId}" class="btn btn-edit">✏ Edit</a>
-                            <a href="delete-product?id=${p.productId}" class="btn btn-delete" onclick="return confirm('Are you sure to delete?')">🗑 Delete</a>
+                            <a href="${UpdateLink}" class="btn btn-edit">✏ Edit</a>
+                            <a href="${DeleteLink}" class="btn btn-delete" onclick="return confirm('Are you sure to delete?')">🗑 Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

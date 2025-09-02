@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<spring:url value='/css/allProducts-style.css' />">
+<link rel="stylesheet" type="text/css" href="<spring:url value='/css/addProduct-style.css' />">
 </head>
 <body>
     <!-- Add Product Form -->
     <div class="form-container">
-        <h3>Add New Product</h3>
+        <h3 class="form-title">Add New Product</h3>
         <form action="add-product" method="post">
             <label>Product Name:</label>
             <input type="text" name="productName" required>
