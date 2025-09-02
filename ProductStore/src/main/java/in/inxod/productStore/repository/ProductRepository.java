@@ -14,9 +14,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	// Custom Finder method
 	
 	List<Product> findAll();
+	
 	List<Product> findByBrandCategory(String category);
 	
 	@Query("SELECT DISTINCT p.brandCategory FROM Product p")
 	List<String> findDistinctCategories();
 
+	List<Product> findByBrand(String brand);
+	
+	@Query("SELECT DISTINCT product.brand FROM Product product")
+	List<String> findDistinctBrand();
 }
