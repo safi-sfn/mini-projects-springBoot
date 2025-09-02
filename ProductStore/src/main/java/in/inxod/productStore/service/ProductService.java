@@ -26,7 +26,6 @@ public interface ProductService {
 	// Getting product by productId for Updating the Product
 	Product getProductById(Integer id);
 
-	
 	// Delete the Product
 	void deleteProductRecord(Integer id);
 
