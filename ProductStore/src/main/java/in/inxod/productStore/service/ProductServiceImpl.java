@@ -48,6 +48,37 @@ public class ProductServiceImpl implements ProductService {
 		return repo.save(product);
 	}
 
+	@Override
+	public List<Product> getProductByBrand(String brand) {
+		
+		return repo.findByBrand(brand);
+	}
+
+	@Override
+	public List<String> getAllBrand() {
+		
+		return repo.findDistinctBrand();
+	}
+
+	@Override
+	public Product updateProduct(Product product) {
+		
+		return null;
+	}
+
+	@Override
+	public void deleteProductRecord(Integer id) {
+		repo.deleteById(id);
+		
+	}
+
+	@Override
+	public Product getProductById(Integer id) {
+		
+		Optional<Product> optional = repo.findById(id);
+		return optional.get();		
+	}
+
 
 	
 	
