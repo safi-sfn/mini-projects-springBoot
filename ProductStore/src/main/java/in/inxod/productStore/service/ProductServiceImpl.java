@@ -61,12 +61,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product updateProduct(Product product) {
-		
-		return null;
-	}
-
-	@Override
 	public void deleteProductRecord(Integer id) {
 		repo.deleteById(id);
 		
