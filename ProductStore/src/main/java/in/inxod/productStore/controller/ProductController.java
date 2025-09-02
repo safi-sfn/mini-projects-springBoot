@@ -28,6 +28,9 @@ public class ProductController {
 		
 		List<String> categories = service.getAllCategories();
 	    model.addAttribute("categories", categories);
+	    
+	    List<String> brands = service.getAllBrand();
+		model.addAttribute("brands", brands);
 		return "dashboard";
 	}
 	
@@ -39,8 +42,24 @@ public class ProductController {
 	
 	    List<String> categories = service.getAllCategories();
 	    model.addAttribute("categories", categories);
+	    
+	    List<String> brands = service.getAllBrand();
+		model.addAttribute("brands", brands);
 	
 	    return "dashboard";
+	}
+	
+	@GetMapping("/brand")
+	public String showByBrand(@RequestParam("brand")String brand, Model model) {
+		List<Product> products = service.getProductByBrand(brand);
+		model.addAttribute("products", products);
+		
+		List<String> categories = service.getAllCategories();
+	    model.addAttribute("categories", categories);
+	    
+	    List<String> brands = service.getAllBrand();
+		model.addAttribute("brands", brands);
+		return "dashboard";
 	}
 	
 	@GetMapping("/new-product")
@@ -55,5 +74,25 @@ public class ProductController {
 		model.addAttribute("newProduct", p);
 		return "redirect:/ps/show-product";
 	}
+	
+	@GetMapping("/delete-data")
+	public String deleteProduct(@RequestParam("productId")Integer id) {
+		service.deleteProductRecord(id);
+		return "redirect:/ps/show-product";
+	}
+	
+	@GetMapping("/update-data")
+	public String updateData(@RequestParam("productId")Integer id , Model model) {
+		
+		Product pr = service.getProductById(id);
+		model.addAttribute("product", pr);
+		return "updateProduct";
+	}
+	
+	
+	
+	
+	
+	
 
 }
