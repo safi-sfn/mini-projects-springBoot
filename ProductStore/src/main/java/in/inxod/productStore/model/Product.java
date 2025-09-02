@@ -58,8 +58,9 @@ public class Product {
 	public void setBrandCategory(String brandCategory) {
 		this.brandCategory = brandCategory;
 	}
-	public Product(String productName, String brand, Double price, Integer stock, String brandCategory) {
+	public Product(Integer productId, String productName, String brand, Double price, Integer stock, String brandCategory) {
 		super();
+		this.productId=productId;
 		this.productName = productName;
 		this.brand = brand;
 		this.price = price;
