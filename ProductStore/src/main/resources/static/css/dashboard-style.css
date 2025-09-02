@@ -1,6 +1,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f6f8;
+ 
+    
+    background: #55E6C1;
     margin: 0;
     padding: 0;
 }
@@ -8,6 +10,7 @@ body {
 .container {
     width: 90%;
     margin: 20px auto;
+    
 }
 
 h2, h3 {
@@ -17,17 +20,14 @@ h2, h3 {
 
 /* Dashboard Card */
 .dashboard-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
+    
 }
 
 .button-group {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
     gap: 12px;
     margin-top: 15px;
 }
@@ -83,7 +83,7 @@ h2, h3 {
     width: 70%;
     margin:0 auto;
     border-collapse: collapse;
-    background: #fff;
+    background: #dfe4ea;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 10px rgba(0,0,0,0.05);
