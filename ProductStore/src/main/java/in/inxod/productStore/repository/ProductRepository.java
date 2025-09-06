@@ -24,4 +24,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	@Query("SELECT DISTINCT product.brand FROM Product product")
 	List<String> findDistinctBrand();
+	
+	List<Product> findByPriceBetween(Double minPrice, Double maxPrice);
 }
