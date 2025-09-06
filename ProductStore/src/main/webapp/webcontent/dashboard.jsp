@@ -18,8 +18,6 @@
         <h2>📦 Product Store Dashboard</h2>
         <div class="button-group">
             <a href="show-product" class="btn">Show All Products</a>
-            <a href="min-price" class="btn">Min Price Product</a>
-            <a href="max-price" class="btn">Max Price Product</a>
             <a href="price-range" class="btn">Products by Price Range</a>
           
              <!-- Dropdown for Brand -->
