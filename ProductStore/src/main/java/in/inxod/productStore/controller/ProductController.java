@@ -98,6 +98,21 @@ public class ProductController {
 		return "updateProduct";
 	}
 	
+	@GetMapping("/price-range")
+	public String getProductInRange() {
+		service.getProductByPriceRange(null, null);
+		return "range";
+	}
+	
+	@PostMapping("/filter-product")
+	public String filterProduct(@RequestParam("minPrice") Double min,
+			                     @RequestParam("maxPrice") Double max , 
+			                     Model model) 
+	{
+		List<Product> products = service.getProductByPriceRange(min, max);
+		 model.addAttribute("products", products);
+		 return "dashboard";
+	}
 	
 	
 	
