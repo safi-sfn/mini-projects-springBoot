@@ -28,6 +28,8 @@ public interface ProductService {
 
 	// Delete the Product
 	void deleteProductRecord(Integer id);
+	
+	List<Product> getProductByPriceRange(Double minPrice, Double maxPrice);
 
 	
 	

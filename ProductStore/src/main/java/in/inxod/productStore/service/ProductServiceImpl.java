@@ -71,6 +71,12 @@ public class ProductServiceImpl implements ProductService {
 		return optional.get();		
 	}
 
+	@Override
+	public List<Product> getProductByPriceRange(Double minPrice, Double maxPrice) {
+		return repo.findByPriceBetween(minPrice, maxPrice);
+		
+	}
+
 
 	
 	
