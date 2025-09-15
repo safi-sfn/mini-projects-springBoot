@@ -8,10 +8,11 @@ import in.inxod.hcl.entity.Patient;
 public interface HospitalService {
 	
 	  // Doctor related
-    Doctor addDoctor(Doctor doctor);
+    public Doctor addDoctor(Doctor doctor);
     public List<Doctor>getAllDoctor();
+   
 
     // Patient related
-    Patient addPatient(Patient patient);
+    public Patient addPatient(Patient patient);
     public List<Patient>getAllPatient();
 }
