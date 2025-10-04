@@ -38,8 +38,6 @@ public class HospitalServiceImpl implements HospitalService {
 	
 	
 	
-	
-	
 	//============== Patient related =============
 	
 
