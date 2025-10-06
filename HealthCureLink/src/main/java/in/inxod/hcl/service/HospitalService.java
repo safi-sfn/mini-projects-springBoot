@@ -7,9 +7,20 @@ import in.inxod.hcl.entity.Patient;
 
 public interface HospitalService {
 	
-	  // Doctor related
+	  //======== Doctor related ==========
+	
+	//  Add a new doctor
     public Doctor addDoctor(Doctor doctor);
+    //  Get all doctors
     public List<Doctor>getAllDoctor();
+    //  Update Doctor Details
+    public Doctor updateDoctor(Doctor doctor);
+    //  Delete Doctor
+    void deleteDoctor(Integer doctorId);  
+    // Get Doctor By specialization
+    public List<Doctor> getDoctorBySpecialization(String specialization);
+    // Get Doctor with experience greater than X year
+    public List<Doctor> getDoctorByExperienceGreaterThan(Integer experience);
    
 
     // Patient related
