@@ -1,6 +1,7 @@
 package in.inxod.hcl.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,27 @@ public class HospitalServiceImpl implements HospitalService {
 		return doctorRepo.findAll();
 	}
 	
+	@Override
+	public Doctor updateDoctor(Doctor doctor) {
+		
+		return doctorRepo.save(doctor);
+	}
+
+	@Override
+	public void deleteDoctor(Integer doctorId) {
+		doctorRepo.deleteById(doctorId);
+	}
+
+	@Override
+	public List<Doctor> getDoctorBySpecialization(String specialization) {
+		
+		return doctorRepo.findBySpecialization(specialization);
+	}
+
+	@Override
+	public List<Doctor> getDoctorByExperienceGreaterThan(Integer experience) {
+		return doctorRepo.findByExperienceGreaterThan(experience);
+	}
 	
 	
 	
@@ -52,5 +74,7 @@ public class HospitalServiceImpl implements HospitalService {
 		
 		return patientRepo.findAll();
 	}
+
+	
 
 }
