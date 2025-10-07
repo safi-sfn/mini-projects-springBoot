@@ -3,6 +3,8 @@ package in.inxod.hcl.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,23 +26,28 @@ public class HospitalController {
 	//============DOCTOR-RELATED=================
 	
 	@PostMapping("/add-doctor")
-	public Doctor addDoctor(@RequestBody Doctor doctor) {
-		return hospitalService.addDoctor(doctor);
+	public ResponseEntity<Doctor> addDoctor(@RequestBody Doctor doctor) {
+		Doctor newDoctor =  hospitalService.addDoctor(doctor);
+		return new ResponseEntity<Doctor>(newDoctor, HttpStatus.CREATED);
 	}
 	@GetMapping("/doctors")
-	public List<Doctor> getAllDoctor(){
-		return hospitalService.getAllDoctor();
+	public ResponseEntity<List<Doctor>> getAllDoctor(){
+		List<Doctor> allDoctors = hospitalService.getAllDoctor();
+		return new ResponseEntity<List<Doctor>>(allDoctors, HttpStatus.OK);
 	}
+	
 	
 	//============PATIENT-RELATED================
 	
 	@PostMapping("/add-patient")
-	public Patient addPatient(@RequestBody Patient patient) {
-		return hospitalService.addPatient(patient);
+	public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
+		Patient newPatient =  hospitalService.addPatient(patient);
+		return new ResponseEntity<Patient>(newPatient, HttpStatus.CREATED);
 	}
 	@GetMapping("/patients")
-	public List<Patient> getAllPatient(){
-		return hospitalService.getAllPatient();
+	public ResponseEntity<List<Patient>> getAllPatient(){
+		List<Patient> patients = hospitalService.getAllPatient();
+		return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
 	}
 	
 	
