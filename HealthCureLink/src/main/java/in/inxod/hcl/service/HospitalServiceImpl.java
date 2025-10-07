@@ -36,6 +36,15 @@ public class HospitalServiceImpl implements HospitalService {
 		return doctorRepo.findAll();
 	}
 	
+	public Doctor getDoctorById(Integer doctorId) {
+		Optional<Doctor> optional =  doctorRepo.findById(doctorId);
+		if(optional.isPresent()) {
+			return optional.get();
+		}else {
+			return null;
+		}
+	}
+	
 	@Override
 	public Doctor updateDoctor(Doctor doctor) {
 		
@@ -74,6 +83,8 @@ public class HospitalServiceImpl implements HospitalService {
 		
 		return patientRepo.findAll();
 	}
+
+	
 
 	
 
