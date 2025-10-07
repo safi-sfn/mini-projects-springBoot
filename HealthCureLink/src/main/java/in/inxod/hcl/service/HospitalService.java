@@ -13,6 +13,8 @@ public interface HospitalService {
     public Doctor addDoctor(Doctor doctor);
     //  Get all doctors
     public List<Doctor>getAllDoctor();
+    // Get Doctor By Id
+    public Doctor getDoctorById(Integer doctorId);
     //  Update Doctor Details
     public Doctor updateDoctor(Doctor doctor);
     //  Delete Doctor
