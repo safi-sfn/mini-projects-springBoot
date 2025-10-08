@@ -69,7 +69,7 @@ public class HospitalServiceImpl implements HospitalService {
 
 	@Override
 	public List<Doctor> getDoctorByExperienceGreaterThan(Integer experience) {
-		return doctorRepo.findByExperienceGreaterThan(experience);
+		return doctorRepo.findByExperienceGreaterThanEqual(experience);
 	}
 	
 	
