@@ -100,6 +100,19 @@ public class DoctorController {
 		}
 		return new ResponseEntity<List<Doctor>>(drList,HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/experience/{exp}")
+	public ResponseEntity<?> getDoctorByExperienceGreaterThan(@PathVariable("exp") Integer experience){
+		List<Doctor> drList = doctorService.getDoctorByExperienceGreaterThan(experience);
+		if(drList.isEmpty()) {
+			String msg = "No doctor with given Experience "+experience;
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+		}
+		return new ResponseEntity<>(drList,HttpStatus.OK);
+		
+	}
+	
 
 }
 
