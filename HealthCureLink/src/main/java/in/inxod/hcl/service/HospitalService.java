@@ -1,5 +1,6 @@
 package in.inxod.hcl.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import in.inxod.hcl.entity.Doctor;
@@ -27,6 +28,43 @@ public interface HospitalService {
 
       //======== Patient related ==========
     
-    public Patient addPatient(Patient patient);
-    public List<Patient>getAllPatient();
+    // Add new patient and assign to doctor
+    Patient addPatient(Patient patient, Integer doctorId);
+    // Update existing patient info
+    Patient updatePatient(Patient patient);
+    // Delete patient by ID
+    void deletePatient(Integer patientId);
+    // Get patient by ID
+    Patient getPatientById(Integer patientId);
+    // Get all patients
+    List<Patient> getAllPatients();
+    // Get patients by disease
+    List<Patient> getPatientsByDisease(String disease);
+    // Get patients assigned to a specific doctor
+    List<Patient> getPatientsByDoctor(Integer doctorId);
+    // Get patients admitted after a certain date
+    List<Patient> getPatientsAdmittedAfter(LocalDate date);
+    // Get patients admitted between two dates
+    List<Patient> getPatientsAdmittedBetween(LocalDate start, LocalDate end);
+    // Get patient by doctor in One-to-One mapping (if a single patient has primary doctor)
+    Patient getPatientByPrimaryDoctor(Integer doctorId);
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
