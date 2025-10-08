@@ -12,7 +12,7 @@ public interface IDoctorRepository extends JpaRepository<Doctor, Integer> {
 
 	List<Doctor> findBySpecialization(String specialization);
 
-	List<Doctor> findByExperienceGreaterThan(Integer experience);
+	List<Doctor> findByExperienceGreaterThanEqual(Integer experience);
 	
 	
 	
