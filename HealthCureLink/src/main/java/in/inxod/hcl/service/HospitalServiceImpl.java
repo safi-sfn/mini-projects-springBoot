@@ -52,8 +52,13 @@ public class HospitalServiceImpl implements HospitalService {
 	}
 
 	@Override
-	public void deleteDoctor(Integer doctorId) {
-		doctorRepo.deleteById(doctorId);
+	public String deleteDoctor(Integer doctorId) {
+		Optional<Doctor> optional = doctorRepo.findById(doctorId);
+		if(optional.isPresent()) {
+			doctorRepo.deleteById(doctorId);
+			return "Deleted";
+		}
+		return "Doctor Not Found with give Id";
 	}
 
 	@Override
