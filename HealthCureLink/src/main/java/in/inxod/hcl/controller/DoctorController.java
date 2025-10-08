@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,7 +83,27 @@ public class DoctorController {
 	    return new ResponseEntity<Doctor>(updated,HttpStatus.OK);
 	}
 	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteDoctor(@PathVariable Integer id){
+		String status = doctorService.deleteDoctor(id);
+		return new ResponseEntity<String>(status,HttpStatus.OK);
+	}
+	
 	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
