@@ -94,49 +94,48 @@ public class HospitalServiceImpl implements HospitalService {
 
 	@Override
 	public Patient updatePatient(Patient patient) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void deletePatient(Integer patientId) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	public Patient getPatientById(Integer patientId) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public List<Patient> getPatientsByDisease(String disease) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public List<Patient> getPatientsByDoctor(Integer doctorId) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public List<Patient> getPatientsAdmittedAfter(LocalDate date) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public List<Patient> getPatientsAdmittedBetween(LocalDate start, LocalDate end) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public Patient getPatientByPrimaryDoctor(Integer doctorId) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
