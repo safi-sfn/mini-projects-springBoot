@@ -1,5 +1,6 @@
 package in.inxod.hcl.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -78,15 +79,65 @@ public class HospitalServiceImpl implements HospitalService {
 	
 
 	@Override
-	public Patient addPatient(Patient patient) {
-		
+	public Patient addPatient(Patient patient, Integer doctorId) {
+		Doctor doctor = doctorRepo.findById(doctorId)
+                .orElseThrow(() -> new RuntimeException("Doctor not found with id: " + doctorId));
+		patient.setDoctor(doctor);
 		return patientRepo.save(patient);
 	}
 
 	@Override
-	public List<Patient> getAllPatient() {
+	public List<Patient> getAllPatients() {
 		
 		return patientRepo.findAll();
+	}
+
+	@Override
+	public Patient updatePatient(Patient patient) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePatient(Integer patientId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Patient getPatientById(Integer patientId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Patient> getPatientsByDisease(String disease) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Patient> getPatientsByDoctor(Integer doctorId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Patient> getPatientsAdmittedAfter(LocalDate date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Patient> getPatientsAdmittedBetween(LocalDate start, LocalDate end) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Patient getPatientByPrimaryDoctor(Integer doctorId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
