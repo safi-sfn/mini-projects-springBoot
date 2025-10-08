@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +24,14 @@ public class PatientController {
 	
 	//============PATIENT-RELATED================
 	
-		@PostMapping("/add")
-		public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
-			Patient newPatient =  patientService.addPatient(patient);
+		@PostMapping("/add/{id}")
+		public ResponseEntity<Patient> addPatient(@RequestBody Patient patient, @PathVariable("id")Integer doctorId) {
+			Patient newPatient =  patientService.addPatient(patient,doctorId);
 			return new ResponseEntity<Patient>(newPatient, HttpStatus.CREATED);
 		}
 		@GetMapping("/getAll")
 		public ResponseEntity<List<Patient>> getAllPatient(){
-			List<Patient> patients = patientService.getAllPatient();
+			List<Patient> patients = patientService.getAllPatients();
 			return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
 		}
 		
