@@ -133,11 +133,7 @@ public class HospitalServiceImpl implements HospitalService {
 		return null;
 	}
 
-	@Override
-	public Patient getPatientByPrimaryDoctor(Integer doctorId) {
 
-		return null;
-	}
 
 	
 
