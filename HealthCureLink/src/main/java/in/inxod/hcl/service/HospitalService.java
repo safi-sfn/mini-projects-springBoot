@@ -46,8 +46,6 @@ public interface HospitalService {
     List<Patient> getPatientsAdmittedAfter(LocalDate date);
     // Get patients admitted between two dates
     List<Patient> getPatientsAdmittedBetween(LocalDate start, LocalDate end);
-    // Get patient by doctor in One-to-One mapping (if a single patient has primary doctor)
-    Patient getPatientByPrimaryDoctor(Integer doctorId);
     
     
 }
