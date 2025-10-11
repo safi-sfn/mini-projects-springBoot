@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.inxod.hcl.entity.Doctor;
+
 import in.inxod.hcl.entity.Patient;
 import in.inxod.hcl.service.HospitalService;
 
@@ -38,7 +38,7 @@ public class PatientController {
 		}
 		
 		@PatchMapping("/update/{id}")
-		public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient, @PathVariable Integer id, Integer drId){
+		public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient, @PathVariable("id")Integer id, Integer drId){
 
 			Patient existingPatient = patientService.getPatientById(id);
 			if(existingPatient==null) {
@@ -59,7 +59,7 @@ public class PatientController {
 				existingPatient.setAge(patient.getAge());
 			}
 
-			Patient updated = patientService.addPatient(existingPatient,drId);
+			Patient updated = patientService.updatePatient(existingPatient);
 
 			return new ResponseEntity<Patient>(updated, HttpStatus.OK);
 		}
