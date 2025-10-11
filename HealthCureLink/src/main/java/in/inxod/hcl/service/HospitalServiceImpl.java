@@ -95,7 +95,7 @@ public class HospitalServiceImpl implements HospitalService {
 	@Override
 	public Patient updatePatient(Patient patient) {
 		
-		return null;
+		return patientRepo.save(patient);
 	}
 
 	@Override
