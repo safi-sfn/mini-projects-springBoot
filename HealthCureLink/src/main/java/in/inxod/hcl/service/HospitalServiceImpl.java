@@ -17,45 +17,43 @@ public class HospitalServiceImpl implements HospitalService {
 
 	@Autowired
 	IPatientRepository patientRepo;
-	
+
 	@Autowired
 	IDoctorRepository doctorRepo;
 
-	
-	
-	//============== Doctor related =============
-	
+	// ============== Doctor related =============
+
 	@Override
 	public Doctor addDoctor(Doctor doctor) {
-		
+
 		return doctorRepo.save(doctor);
 	}
-	
+
 	@Override
 	public List<Doctor> getAllDoctor() {
-		
+
 		return doctorRepo.findAll();
 	}
-	
+
 	public Doctor getDoctorById(Integer doctorId) {
-		Optional<Doctor> optional =  doctorRepo.findById(doctorId);
-		if(optional.isPresent()) {
+		Optional<Doctor> optional = doctorRepo.findById(doctorId);
+		if (optional.isPresent()) {
 			return optional.get();
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public Doctor updateDoctor(Doctor doctor) {
-		
+
 		return doctorRepo.save(doctor);
 	}
 
 	@Override
 	public String deleteDoctor(Integer doctorId) {
 		Optional<Doctor> optional = doctorRepo.findById(doctorId);
-		if(optional.isPresent()) {
+		if (optional.isPresent()) {
 			doctorRepo.deleteById(doctorId);
 			return "Deleted";
 		}
@@ -64,7 +62,7 @@ public class HospitalServiceImpl implements HospitalService {
 
 	@Override
 	public List<Doctor> getDoctorBySpecialization(String specialization) {
-		
+
 		return doctorRepo.findBySpecialization(specialization);
 	}
 
@@ -72,44 +70,41 @@ public class HospitalServiceImpl implements HospitalService {
 	public List<Doctor> getDoctorByExperienceGreaterThan(Integer experience) {
 		return doctorRepo.findByExperienceGreaterThanEqual(experience);
 	}
-	
-	
-	
-	//============== Patient related =============
-	
+
+	// ============== Patient related =============
 
 	@Override
 	public Patient addPatient(Patient patient, Integer doctorId) {
 		Doctor doctor = doctorRepo.findById(doctorId)
-                .orElseThrow(() -> new RuntimeException("Doctor not found with id: " + doctorId));
+				.orElseThrow(() -> new RuntimeException("Doctor not found with id: " + doctorId));
 		patient.setDoctor(doctor);
 		return patientRepo.save(patient);
 	}
 
 	@Override
 	public List<Patient> getAllPatients() {
-		
+
 		return patientRepo.findAll();
 	}
 
 	@Override
 	public Patient updatePatient(Patient patient) {
-		
+
 		return patientRepo.save(patient);
 	}
 
 	@Override
 	public void deletePatient(Integer patientId) {
-	
+
 	}
 
 	@Override
 	public Patient getPatientById(Integer patientId) {
-		Optional<Patient> optional = patientRepo.findById(patientId);		
-		if(optional.isPresent()) {
+		Optional<Patient> optional = patientRepo.findById(patientId);
+		if (optional.isPresent()) {
 			return optional.get();
-		}else {
-			
+		} else {
+
 			return null;
 		}
 	}
@@ -137,11 +132,5 @@ public class HospitalServiceImpl implements HospitalService {
 
 		return null;
 	}
-
-
-
-	
-
-	
 
 }
