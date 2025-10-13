@@ -33,7 +33,7 @@ public interface HospitalService {
     // Update existing patient info
     Patient updatePatient(Patient patient);
     // Delete patient by ID
-    void deletePatient(Integer patientId);
+    String deletePatient(Integer patientId);
     // Get patient by ID
     Patient getPatientById(Integer patientId);
     // Get all patients
