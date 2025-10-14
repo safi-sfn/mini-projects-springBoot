@@ -41,7 +41,7 @@ public interface HospitalService {
     // Get patients by disease
     List<Patient> getPatientsByDisease(String disease);
     // Get patients assigned to a specific doctor
-    List<Patient> getPatientsByDoctor(Integer doctorId);
+    List<Patient> getPatientsByDoctor(String doctorName);
     // Get patients admitted after a certain date
     List<Patient> getPatientsAdmittedAfter(LocalDate date);
     // Get patients admitted between two dates
