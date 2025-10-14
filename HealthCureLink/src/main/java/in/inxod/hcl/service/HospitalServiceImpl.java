@@ -120,11 +120,12 @@ public class HospitalServiceImpl implements HospitalService {
 	@Override
 	public List<Patient> getPatientsByDisease(String disease) {
 
-		return null;
+	List<Patient> patientList = patientRepo.findByDisease(disease);
+		return patientList;
 	}
 
 	@Override
-	public List<Patient> getPatientsByDoctor(Integer doctorId) {
+	public List<Patient> getPatientsByDoctor(String doctorName) {
 
 		return null;
 	}
