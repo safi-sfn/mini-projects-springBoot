@@ -27,8 +27,8 @@ public class PatientController {
 	
 	//============PATIENT-RELATED================
 	
-		@PostMapping("/add/{id}")
-		public ResponseEntity<Patient> addPatient(@RequestBody Patient patient, @PathVariable("id")Integer doctorId) {
+		@PostMapping("/add/{doctorId}")
+		public ResponseEntity<Patient> addPatient(@RequestBody Patient patient, @PathVariable("doctorId")Integer doctorId) {
 			Patient newPatient =  patientService.addPatient(patient,doctorId);
 			return new ResponseEntity<Patient>(newPatient, HttpStatus.CREATED);
 		}
@@ -71,6 +71,17 @@ public class PatientController {
 			return new ResponseEntity<String>(status,HttpStatus.OK);
 		}
 		
+		
+		@GetMapping("/patient-disease/{disease}")
+		public ResponseEntity<?> getPatientByDisease(@PathVariable("disease") String disease){
+			List<Patient> patientList = patientService.getPatientsByDisease(disease);
+			if(patientList.isEmpty()) {
+				String msg = "Patient Not Found with This Disease "+disease;
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+			}else {
+			return new ResponseEntity<List<Patient>>(patientList,HttpStatus.OK);
+			}
+		}
 }
 
 
