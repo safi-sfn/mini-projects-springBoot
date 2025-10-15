@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import in.inxod.hcl.entity.Patient;
 import in.inxod.hcl.service.HospitalService;
 
@@ -24,72 +23,64 @@ public class PatientController {
 
 	@Autowired
 	private HospitalService patientService;
-	
-	//============PATIENT-RELATED================
-	
-		@PostMapping("/add/{doctorId}")
-		public ResponseEntity<Patient> addPatient(@RequestBody Patient patient, @PathVariable("doctorId")Integer doctorId) {
-			Patient newPatient =  patientService.addPatient(patient,doctorId);
-			return new ResponseEntity<Patient>(newPatient, HttpStatus.CREATED);
-		}
-		@GetMapping("/getAll")
-		public ResponseEntity<List<Patient>> getAllPatient(){
-			List<Patient> patients = patientService.getAllPatients();
-			return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
-		}
-		
-		@PatchMapping("/update/{id}")
-		public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient, @PathVariable("id")Integer id, Integer drId){
 
-			Patient existingPatient = patientService.getPatientById(id);
-			if(existingPatient==null) {
-				return ResponseEntity.notFound().build();
-			}
-			
-			// Update only provided fields
-			if (patient.getName() != null) {
-				existingPatient.setName(patient.getName());
-			}
-			if (patient.getDoctor() != null) {
-				existingPatient.setDoctor(patient.getDoctor());
-			}
-			if (patient.getDisease() != null) {
-				existingPatient.setDisease(patient.getDisease());
-			}
-			if (patient.getAge()!= null) {
-				existingPatient.setAge(patient.getAge());
-			}
+	// ============PATIENT-RELATED================
 
-			Patient updated = patientService.updatePatient(existingPatient);
+	@PostMapping("/add/{doctorId}")
+	public ResponseEntity<Patient> addPatient(@RequestBody Patient patient,
+			@PathVariable("doctorId") Integer doctorId) {
+		Patient newPatient = patientService.addPatient(patient, doctorId);
+		return new ResponseEntity<Patient>(newPatient, HttpStatus.CREATED);
+	}
 
-			return new ResponseEntity<Patient>(updated, HttpStatus.OK);
+	@GetMapping("/getAll")
+	public ResponseEntity<List<Patient>> getAllPatient() {
+		List<Patient> patients = patientService.getAllPatients();
+		return new ResponseEntity<List<Patient>>(patients, HttpStatus.OK);
+	}
+
+	@PatchMapping("/update/{id}")
+	public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient, @PathVariable("id") Integer id,
+			Integer drId) {
+
+		Patient existingPatient = patientService.getPatientById(id);
+		if (existingPatient == null) {
+			return ResponseEntity.notFound().build();
 		}
-		
-		@DeleteMapping("/delete/{id}")
-		public ResponseEntity<String> deletePatient(@PathVariable("id") Integer patientId){
-			String status = patientService.deletePatient(patientId);
-			return new ResponseEntity<String>(status,HttpStatus.OK);
+
+		// Update only provided fields
+		if (patient.getName() != null) {
+			existingPatient.setName(patient.getName());
 		}
-		
-		
-		@GetMapping("/patient-disease/{disease}")
-		public ResponseEntity<?> getPatientByDisease(@PathVariable("disease") String disease){
-			List<Patient> patientList = patientService.getPatientsByDisease(disease);
-			if(patientList.isEmpty()) {
-				String msg = "Patient Not Found with This Disease "+disease;
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
-			}else {
-			return new ResponseEntity<List<Patient>>(patientList,HttpStatus.OK);
-			}
+		if (patient.getDoctor() != null) {
+			existingPatient.setDoctor(patient.getDoctor());
 		}
+		if (patient.getDisease() != null) {
+			existingPatient.setDisease(patient.getDisease());
+		}
+		if (patient.getAge() != null) {
+			existingPatient.setAge(patient.getAge());
+		}
+
+		Patient updated = patientService.updatePatient(existingPatient);
+
+		return new ResponseEntity<Patient>(updated, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deletePatient(@PathVariable("id") Integer patientId) {
+		String status = patientService.deletePatient(patientId);
+		return new ResponseEntity<String>(status, HttpStatus.OK);
+	}
+
+	@GetMapping("/patient-disease/{disease}")
+	public ResponseEntity<?> getPatientByDisease(@PathVariable("disease") String disease) {
+		List<Patient> patientList = patientService.getPatientsByDisease(disease);
+		if (patientList.isEmpty()) {
+			String msg = "Patient Not Found with This Disease " + disease;
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+		} else {
+			return new ResponseEntity<List<Patient>>(patientList, HttpStatus.OK);
+		}
+	}
 }
-
-
-
-
-
-
-
-
-
-
