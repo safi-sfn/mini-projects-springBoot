@@ -127,7 +127,9 @@ public class HospitalServiceImpl implements HospitalService {
 	@Override
 	public List<Patient> getPatientsByDoctor(String doctorName) {
 
-		return null;
+		List<Patient> patientList = patientRepo.findByDoctorName(doctorName);
+		
+		return patientList;
 	}
 
 	@Override
