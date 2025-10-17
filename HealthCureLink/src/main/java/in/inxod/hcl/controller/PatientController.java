@@ -48,7 +48,6 @@ public class PatientController {
 			return ResponseEntity.notFound().build();
 		}
 
-		// Update only provided fields
 		if (patient.getName() != null) {
 			existingPatient.setName(patient.getName());
 		}
@@ -83,4 +82,28 @@ public class PatientController {
 			return new ResponseEntity<List<Patient>>(patientList, HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping("/patient-doctor/{name}")
+	public ResponseEntity<?> getPatientByDoctorName(@PathVariable("name") String doctorName){
+		List<Patient> patientList = patientService.getPatientsByDoctor(doctorName);
+		if (patientList.isEmpty()) {
+			String msg = "Patient Not Found with This Doctor " + doctorName;
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+		} else {
+			return new ResponseEntity<List<Patient>>(patientList, HttpStatus.OK);
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
