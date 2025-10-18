@@ -82,9 +82,9 @@ public class PatientController {
 			return new ResponseEntity<List<Patient>>(patientList, HttpStatus.OK);
 		}
 	}
-	
+
 	@GetMapping("/patient-doctor/{name}")
-	public ResponseEntity<?> getPatientByDoctorName(@PathVariable("name") String doctorName){
+	public ResponseEntity<?> getPatientByDoctorName(@PathVariable("name") String doctorName) {
 		List<Patient> patientList = patientService.getPatientsByDoctor(doctorName);
 		if (patientList.isEmpty()) {
 			String msg = "Patient Not Found with This Doctor " + doctorName;
@@ -94,16 +94,3 @@ public class PatientController {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
