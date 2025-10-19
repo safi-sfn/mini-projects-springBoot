@@ -8,7 +8,7 @@ import in.inxod.hcl.entity.Patient;
 
 public interface HospitalService {
 
-	// ======== Doctor related ==========
+	// ======== DOCTOR-RELATED ==========
 
 	// Add a new doctor
 	public Doctor addDoctor(Doctor doctor);
