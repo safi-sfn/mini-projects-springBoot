@@ -11,22 +11,22 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="appointment")
+@Table(name = "appointment")
 public class Appointment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer appointmentId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer appointmentId;
 
-    private LocalDate appointmentDate;
-    private String reason;
+	private LocalDate appointmentDate;
+	private String reason;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+	@ManyToOne
+	@JoinColumn(name = "patient_id")
+	private Patient patient;
 
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+	@ManyToOne
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctor;
 
 	public Integer getAppointmentId() {
 		return appointmentId;
@@ -80,6 +80,5 @@ public class Appointment {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
-    
+
 }
