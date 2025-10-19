@@ -24,7 +24,7 @@ public class PatientController {
 	@Autowired
 	private HospitalService patientService;
 
-	// ============PATIENT-RELATED================
+	// ============ PATIENT-RELATED ================
 
 	@PostMapping("/add/{doctorId}")
 	public ResponseEntity<Patient> addPatient(@RequestBody Patient patient,
