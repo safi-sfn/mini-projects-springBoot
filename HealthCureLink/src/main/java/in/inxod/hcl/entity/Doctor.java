@@ -13,20 +13,20 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="doctor")
+@Table(name = "doctor")
 public class Doctor {
 
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Integer doctorId;
-     private String name;
-	 private String specialization;
-	 private Integer experience;
-	 private Double salary;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer doctorId;
+	private String name;
+	private String specialization;
+	private Integer experience;
+	private Double salary;
 
-	 @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-	 @JsonIgnoreProperties("doctor")   // patients ke andar doctor ignore karega
-	 private List<Patient> patients;
+	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("doctor") // patients ke andar doctor ignore karega
+	private List<Patient> patients;
 
 	public Integer getDoctorId() {
 		return doctorId;
@@ -89,6 +89,5 @@ public class Doctor {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	 
-	 
+
 }
