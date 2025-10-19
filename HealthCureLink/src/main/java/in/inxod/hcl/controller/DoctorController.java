@@ -87,51 +87,26 @@ public class DoctorController {
 		String status = doctorService.deleteDoctor(id);
 		return new ResponseEntity<String>(status, HttpStatus.OK);
 	}
-	
-	
+
 	@GetMapping("/specialization/{drSpslize}")
-	public ResponseEntity<?> getDoctorBySpecialization(@PathVariable("drSpslize") String drSpslize){
+	public ResponseEntity<?> getDoctorBySpecialization(@PathVariable("drSpslize") String drSpslize) {
 		List<Doctor> drList = doctorService.getDoctorBySpecialization(drSpslize);
-		if(drList.isEmpty()) {
+		if (drList.isEmpty()) {
 			String msg = "No doctors found with specialization: " + drSpslize;
-			return ResponseEntity
-					.status(HttpStatus.NOT_FOUND)
-					.body(msg);
-		}
-		return new ResponseEntity<List<Doctor>>(drList,HttpStatus.OK);
-	}
-	
-	
-	@GetMapping("/experience/{exp}")
-	public ResponseEntity<?> getDoctorByExperienceGreaterThan(@PathVariable("exp") Integer experience){
-		List<Doctor> drList = doctorService.getDoctorByExperienceGreaterThan(experience);
-		if(drList.isEmpty()) {
-			String msg = "No doctor with given Experience "+experience;
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
 		}
-		return new ResponseEntity<>(drList,HttpStatus.OK);
-		
+		return new ResponseEntity<List<Doctor>>(drList, HttpStatus.OK);
 	}
-	
+
+	@GetMapping("/experience/{exp}")
+	public ResponseEntity<?> getDoctorByExperienceGreaterThan(@PathVariable("exp") Integer experience) {
+		List<Doctor> drList = doctorService.getDoctorByExperienceGreaterThan(experience);
+		if (drList.isEmpty()) {
+			String msg = "No doctor with given Experience " + experience;
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+		}
+		return new ResponseEntity<>(drList, HttpStatus.OK);
+
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
