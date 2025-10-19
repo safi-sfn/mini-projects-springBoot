@@ -21,7 +21,7 @@ public class HospitalServiceImpl implements HospitalService {
 	@Autowired
 	IDoctorRepository doctorRepo;
 
-	// ============== Doctor related =============
+	// ============== DOCTOR-RELATED =============
 
 	@Override
 	public Doctor addDoctor(Doctor doctor) {
