@@ -10,4 +10,6 @@ public interface IAppointmentRepository extends JpaRepository<Appointment, Integ
 	// Book New Appointment
 	public Appointment bookAppointment(Appointment appointment, Integer patientId, Integer doctorId);
 	
+	 // Update appointment details
+    Appointment updateAppointment(Appointment appointment);
 }
